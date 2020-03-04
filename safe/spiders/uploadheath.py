@@ -11,7 +11,7 @@ class UploadheathSpider(scrapy.Spider):
     def parse(self, response):
         url = 'http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do'
         #此处填写用户账号密码
-        data = {'username': '2016171122', 'password': '231314'}
+        data = {'username': '2016171122', 'password': 'wxx1123wxx'}
         request = scrapy.FormRequest(url=url,formdata=data,callback=self.parse_page,dont_filter=True)
         yield  request
 
@@ -22,7 +22,7 @@ class UploadheathSpider(scrapy.Spider):
 
     #进入信息修改界面
     def parse_edit(self,response):
-        request = scrapy.Request(url='http://yiqing.ctgu.edu.cn/wx/health/editApply.do',callback=self.parse_token)
+        request = scrapy.Request(url='http://yiqing.ctgu.edu.cn/wx/health/toApply.do',callback=self.parse_token)
         yield request
 
     #获取需要上传的form数据，并上传
@@ -31,13 +31,13 @@ class UploadheathSpider(scrapy.Spider):
         inputs = response.xpath('//input')
         information = dict()
         information2 = dict()
-        key = ['ttoken', 'province', 'city', 'district', 'adcode', 'longitude', 'latitude', 'sfqz', 'sfys', 'sfzy', 'sfgl', 'status', 'sfgr', 'szdz', 'sjh', 'lxrxm', 'lxrsjh', 'sffr', 'sffy', 'qzglsj', 'qzgldd', 'glyy', 'sffx', 'mqzz', 'qt']
+        key = ['ttoken', 'province', 'city', 'district', 'adcode', 'longitude', 'latitude', 'sfqz', 'sfys', 'sfzy', 'sfgl', 'status', 'sfgr', 'szdz', 'sjh', 'lxrxm', 'lxrsjh', 'sffr', 'sffy', 'sfgr', 'qzglsj', 'qzgldd', 'glyy', 'sffx']
         for input in inputs:
             information[input.xpath('./@name').get()] = input.xpath('./@value').get()
         for i in key:
             information2[i] = information[i]
         #修改数据紧急联系人姓名
-        information2['lxrxm'] = 'webdog'
+        information2['lxrxm'] = '王萧翔'
         #未知
         information2['mqzz'] = '这是什么'
         #修改信息，其他健康情况
