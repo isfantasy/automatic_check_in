@@ -1,0 +1,15 @@
+POST /wx/health/saveApply.do HTTP/1.1
+Host: yiqing.ctgu.edu.cn
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With: XMLHttpRequest
+Content-Length: 521
+Origin: http://yiqing.ctgu.edu.cn
+Connection: close
+Referer: http://yiqing.ctgu.edu.cn/wx/health/editApply.do
+Cookie: JSESSIONID=6C251F9998470429C9A87007C5476BD9
+
+ttoken=31c38345-f0a7-4a65-90aa-035cf63c7edd&province=%E6%B9%96%E5%8C%97%E7%9C%81&city=%E5%AD%9D%E6%84%9F%E5%B8%82&district=%E5%AD%9D%E5%8D%97%E5%8C%BA&adcode=420902&longitude=0&latitude=0&sfqz=%E5%90%A6&sfys=%E5%90%A6&sfzy=%E5%90%A6&sfgl=%E5%90%A6&status=1&sfgr=%E5%90%A6&szdz=%E6%B9%96%E5%8C%97%E7%9C%81+%E5%AD%9D%E6%84%9F%E5%B8%82+%E5%AD%9D%E5%8D%97%E5%8C%BA&sjh=15871577679&lxrxm=%E7%8E%8B%E8%90%A7%E7%BF%94&lxrsjh=15871577679&sffr=%E5%90%A6&sffy=%E5%90%A6&sfgr=%E5%90%A6&qzglsj=&qzgldd=&glyy=&mqzz=&sffx=%E5%90%A6&qt=
