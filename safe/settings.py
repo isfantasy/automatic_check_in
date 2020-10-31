@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+'''
+Author: Fantasy
+Date: 2020-10-31 19:21:52
+LastEditors: Fantasy
+LastEditTime: 2020-10-31 22:27:07
+Descripttion: 
+Email: 776474961@qq.com
+'''
 
 # Scrapy settings for safe project
 #
@@ -14,9 +22,8 @@ BOT_NAME = 'safe'
 SPIDER_MODULES = ['safe.spiders']
 NEWSPIDER_MODULE = 'safe.spiders'
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'safe (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4302.0 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -40,9 +47,12 @@ DOWNLOAD_DELAY = 1
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
-  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-  'Accept-Language': 'en',
-    'User-Agent': 'Mozilla/5.0 (Android 2.2; Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4',
+    'Accept':
+    'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language':
+    'en',
+    'User-Agent':
+    'Mozilla/5.0 (Android 2.2; Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4',
 }
 
 # Enable or disable spider middlewares
@@ -89,3 +99,5 @@ DEFAULT_REQUEST_HEADERS = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+ACCOUNTS = [('201808120021001', '01003X'), ('202008120021003', '064978')]
