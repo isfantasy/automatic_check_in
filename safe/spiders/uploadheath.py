@@ -3,7 +3,7 @@
 Author: Fantasy
 Date: 2020-10-31 19:21:52
 LastEditors: Fantasy
-LastEditTime: 2020-10-31 22:21:45
+LastEditTime: 2020-11-01 11:25:26
 Descripttion: 
 Email: 776474961@qq.com
 '''
@@ -11,13 +11,13 @@ import scrapy
 from scrapy.utils.project import get_project_settings
 import re
 
-
 class UploadheathSpider(scrapy.Spider):
     name = 'uploadheath'
     allowed_domains = ['ctgu.edu.cn']
     login_url = 'http://yiqing.ctgu.edu.cn/wx/index/loginSubmit.do'
     apply_url = 'http://yiqing.ctgu.edu.cn/wx/health/toApply.do'
     sava_url = 'http://yiqing.ctgu.edu.cn/wx/health/saveApply.do'
+    logout_url = 'http://yiqing.ctgu.edu.cn/wx/index/logout.do'
 
     def start_requests(self):
         settings = get_project_settings()
@@ -51,12 +51,12 @@ class UploadheathSpider(scrapy.Spider):
         account = response.meta['account']
         if re.findall(r'修改', response.text):
             print("用户 {} 今日已上报过".format(account['username']))
-            return
         inputs = response.xpath('//input')
         form_data = {}
         for inp in inputs:
             form_data[inp.xpath('./@name').get()] = inp.xpath('./@value').get()
-        form_data.pop(None)
+        if None in form_data.keys():
+            form_data.pop(None)
         yield scrapy.FormRequest(url=self.sava_url,
                                  formdata=form_data,
                                  meta={'account': account},
@@ -69,4 +69,16 @@ class UploadheathSpider(scrapy.Spider):
             print("用户 {} 上报成功".format(account['username']))
         else:
             print("用户 {} 上报失败：".format(account['username']))
+            print(response.text)
+            yield scrapy.Request(url=self.apply_url,
+                                 callback=self.apply_info_extract,
+                                 meta={'account': account},
+                                 dont_filter=True)
+
+    def check_logout(self, response):
+        account = response.meta['account']
+        if re.findall(r'登陆', response.text):
+            print("用户 {} 退出成功".format(account['username']))
+        else:
+            print("用户 {} 退出失败：".format(account['username']))
             print(response.text)
